@@ -1,12 +1,12 @@
 project_name = [
-  "bradwhitcomb.com"
+  "terraform-aws-webapp"
 ]
 
 environment = [
   "prod"
 ]
 
-image_id = [
+ami = [
   "ami-00785f4835c6acf64"
 ]
 

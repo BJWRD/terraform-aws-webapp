@@ -1,4 +1,8 @@
-variable "image_id" {
+variable "instance_count" {
+  default = 1
+}
+
+variable "ami_id" {
   type = string
 }
 
@@ -8,15 +12,6 @@ variable "instance_type" {
 
 variable "vpc_security_group_ids" {
   type = string
-}
-
-variable "id_app" {
-  type = string
-}
-
-variable "name_prefix" {
-  type    = string
-  default = "app-launch-template"
 }
 
 variable "resource_tags" {
@@ -31,4 +26,9 @@ variable "project_name" {
 
 variable "environment" {
   type = string
+}
+
+variable "subnet_id" {
+  type = string
+  default = "aws_subnet.public_subnet.id"
 }

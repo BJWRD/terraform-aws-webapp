@@ -1,5 +1,5 @@
 project_name = [
-  "bradwhitcomb.com"
+  "terraform-aws-webapp"
 ]
 
 environment = [
@@ -8,10 +8,6 @@ environment = [
 
 cidr_blocks = [
   "0.0.0.0/0"
-]
-
-alb_app_security_group = [
-  "alb-app-security-group"
 ]
 
 app_instance_security_group = [

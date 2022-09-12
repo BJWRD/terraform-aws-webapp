@@ -10,10 +10,6 @@ variable "az_public_subnet" {
   type = map(string)
 }
 
-variable "az_private_subnet" {
-  type = map(string)
-}
-
 variable "availability_zones" {
   type = list(string)
 }
@@ -38,22 +34,6 @@ variable "aws_subnet_public_subnet" {
   type = string
 }
 
-variable "aws_subnet_private_subnet" {
-  type = string
-}
-
-variable "id_app" {
-  type = string
-}
-
-variable "load_balancer_type" {
-  type = string
-}
-
-variable "security_group_alb_app_http" {
-  type = string
-}
-
 variable "resource_tags" {
   description = "Tags to set for RDS resource"
   type        = map(string)
@@ -65,17 +45,5 @@ variable "project_name" {
 }
 
 variable "environment" {
-  type = string
-}
-
-variable "app_alb_lb" {
-  type = string
-}
-
-variable "app_target_group" {
-  type = string
-}
-
-variable "app_autoscaling_group" {
   type = string
 }

@@ -10,13 +10,37 @@ locals {
   tags = merge(var.resource_tags, local.required_tags)
 }
 
-# App - Launch Template
-resource "aws_launch_template" "app_launch_template" {
-  name_prefix            = var.name_prefix
-  image_id               = var.image_id
-  instance_type          = var.instance_type
+#EC2 Webapp Host
+resource "aws_instance" "web" {
+  count         = var.instance_count
+  ami           = var.ami_id
+  subnet_id     = var.subnet_id
+  instance_type = var.instance_type
   vpc_security_group_ids = [var.vpc_security_group_ids]
-  user_data              = filebase64("./modules/ec2/install.sh")
+  #key_name - allows private key (.pem file) to be used with ec2 instance
+  key_name = "terraform"
 
   tags = local.tags
+
+  connection {
+    type  = "ssh"
+    user  =  "ec2-user"
+    #private_key is created within AWS EC2 Console, .pem file placed in same directory as .tf
+    private_key = file("./terraform.pem")
+    #allows connection to newly created ec2 instance
+    host = self.public_ip
+   }
+
+provisioner "remote-exec" {
+  #inline command allows you to enter a list of executable commands within your instance
+  inline = [
+    "sudo yum install yum-utils -y",
+    "sudo yum-config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo",
+    "sudo yum install docker-ce docker-ce-cli containerd.io -y",
+    "sudo systemctl docker.service enable --now",
+    "sudo systemctl containerd.service enable --now",
+    "sudo curl -L https://github.com/docker/compose/releases/tag/v2.10.2/docker-compose-$(uname -s)-$(uname-m) -o /usr/local/bin/docker-compose",
+    "sudo chmod +x /usr/local/bin/docker-compose"
+  ]
+ }
 }

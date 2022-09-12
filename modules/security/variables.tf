@@ -20,14 +20,6 @@ variable "environment" {
   type = string
 }
 
-variable "alb_app_security_group" {
-  type = string
-}
-
 variable "app_instance_security_group" {
-  type = string
-}
-
-variable "db_security_group" {
   type = string
 }
