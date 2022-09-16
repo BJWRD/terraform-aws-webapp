@@ -5,7 +5,7 @@ Web Application Hosting using Terraform, AWS, Docker, Python
 This network architecture has three subnet tiers split across three availability zones. The subnets will also have a VPC routing table that will provide it access to the internet. The Security Group will allow port 22 access to those that have the relevant .pem file, this will allow the EC2 host to be configured upon start-up using the commands located in prod>modules>EC2>main.tf
 
 
-<img width="482" alt="image" src="https://user-images.githubusercontent.com/83971386/190575094-12190766-3468-4aa8-82b3-32047b771b3e.png">
+<img width="492" alt="image" src="https://user-images.githubusercontent.com/83971386/190575501-77b4c6aa-0e05-4ebc-896b-af68bbdd3681.png">
 
 # Prerequisites
 * An AWS Account with an IAM user capable of creating resources – `AdminstratorAccess`
