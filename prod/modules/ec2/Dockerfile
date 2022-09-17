@@ -1,10 +1,15 @@
 FROM ubuntu
 
 RUN apt-get update
-RUN apt-get install -y python python-pip
+RUN apt-get install -y python3
+RUN apt-get install -y python3-pip
 RUN pip install flask
 
+#Copy the app.py file from the current folder to /opt inside the container
 COPY app.py /opt/app.py
+EXPOSE 8080
 
+ENTRYPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0 --port=8080
 
-ENTRYPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0
+#To ensure that the container continues to run and doesn't stop
+ENTRYPOINT FLASK_APP=/opt/app.py tail -f /dev/null
