@@ -30,5 +30,5 @@ resource "aws_instance" "web" {
     private_key = file("./terraform.pem")
     #allows connection to newly created ec2 instance
     host = self.public_ip
-   }
+  }
 }
