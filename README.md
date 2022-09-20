@@ -1,5 +1,5 @@
 # terraform-aws-webapp
-Web Application Hosting using Terraform, AWS, Docker, Python
+This is a simple web application using Python Flask, Docker, Terraform and AWS.
 
 # Architecture
 This network architecture has three subnet tiers split across three availability zones. The subnets will also have a VPC routing table that will provide it access to the internet. The Security Group will allow port 22 access to those that have the relevant .pem file, this will allow the EC2 host to be configured upon start-up using the commands located in prod>modules>EC2>main.tf
@@ -36,6 +36,23 @@ This section details the deployment and teardown of the three-tier-architecture.
 
 6.	Execute terraform configuration 
 `terraform apply --auto-approve`
+
+**Docker/Webapp Flask Deployment Steps**
+
+7.  Change directory to 'files'
+`cd files`
+
+8.  Start the Container using Docker-Compose
+`docker-compose up -d`
+
+9.  Test connectivity to the Python Flask Webapp
+`curl http://localhost:8080`
+      `Hello World!`
+
+    OR
+
+    Access a browser and enter -
+    `http://<IP>:8080`
 
 **Teardown steps**
 
