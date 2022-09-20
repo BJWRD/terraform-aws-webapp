@@ -14,18 +14,18 @@ module "ec2" {
 }
 
 module "vpc" {
-  source                      = "./modules/vpc"
-  vpc_id                      = var.vpc_id
-  vpc_cidr                    = var.vpc_cidr
-  availability_zones          = var.availability_zones
-  route_table_id              = var.route_table_id
-  gateway_id                  = var.gateway_id
-  destination_cidr_block      = var.destination_cidr_block
-  aws_subnet_public_subnet    = var.aws_subnet_public_subnet
-  subnet_id                   = var.subnet_id
-  az_public_subnet            = var.az_public_subnet
-  project_name                = var.project_name
-  environment                 = var.environment
+  source                   = "./modules/vpc"
+  vpc_id                   = var.vpc_id
+  vpc_cidr                 = var.vpc_cidr
+  availability_zones       = var.availability_zones
+  route_table_id           = var.route_table_id
+  gateway_id               = var.gateway_id
+  destination_cidr_block   = var.destination_cidr_block
+  aws_subnet_public_subnet = var.aws_subnet_public_subnet
+  subnet_id                = var.subnet_id
+  az_public_subnet         = var.az_public_subnet
+  project_name             = var.project_name
+  environment              = var.environment
 }
 
 module "security" {
