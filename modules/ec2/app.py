@@ -1,11 +1,10 @@
 import os
 from flask import Flask
-app = Flask(_name_)
+app = Flask(__name__)
 
 @app.route("/")
 def main():
     return "Hello World!"
 
-if_name_ == "_main_":
-    app_run()
-    
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080)
